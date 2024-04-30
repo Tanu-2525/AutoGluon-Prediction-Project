@@ -11,9 +11,10 @@ The low Kaggle score suggested that the model, despite its decent RMSE, wasn't a
 * Feature Encoding: The categorical features derived from weather and time data as well as season attrinute required appropriate encoding to ensure they were suitably formatted for machine learning analysis. One-hot encoding seemed a strategic choice to prevent the model from misinterpreting the ordinal nature of these features.
 * Hyperparameter Tuning: Given the model's initial success yet subpar competition performance, it became evident that fine-tuning the hyperparameters could potentially enhance model accuracy. 
 
-### What was the top ranked model that performed?
+### What was the top ranked model that performed ?
 ![initial_train_leaderboard.png](img/initial_train_leaderboard.png)
-Based on the results presented in the leaderboard, the top-ranked model that performed best initially is the WeightedEnsemble_L3, with a root mean squared error (RMSE) of -63.791227. The lower the RMSE value, the better the model's performance in terms of predicting the target variable.
+
+Based on the results presented in the leaderboard, the top-ranked model that performed best *initially* is the WeightedEnsemble_L3, with a root mean squared error (RMSE) of -63.791227. The lower the RMSE value, the better the model's performance in terms of predicting the target variable.
 In this case, WeightedEnsemble_L3 has the most negative RMSE, indicating the best performance among the listed models.
 
 ## Exploratory data analysis and feature creation
