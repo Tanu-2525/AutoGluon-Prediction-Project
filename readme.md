@@ -1,8 +1,7 @@
-# Report: Predict Bike Sharing Demand with AutoGluon Solution
-#### Tanu Tomar
+# Predict Bike Sharing Demand with AutoGluon Solution
+
 
 ## Initial Training
-### What did you realize when you tried to submit your predictions? What changes were needed to the output of the predictor to submit your results?
 In the spirit of machine learning's guiding principle, "garbage in, garbage out," I encountered some interesting insights while attempting to submit predictions.Machine learning models rely heavily on the quality of the data they are trained on. In this specific case, the AutoGluon library reported a root mean squared error (RMSE) of -0.68, which initially indicated a good performing model. However, when I submitted predictions without any data preprocessing, the Kaggle competition score turned out to be quite low. This highlighted the importance of data preparation in achieving accurate predictions.
 The low Kaggle score suggested that the model, despite its decent RMSE, wasn't able to understand the training data correctly. 
 
@@ -18,7 +17,6 @@ Based on the results presented in the leaderboard, the top-ranked model that per
 In this case, WeightedEnsemble_L3 has the most negative RMSE, indicating the best performance among the listed models.
 
 ## Exploratory data analysis and feature creation
-### What did the exploratory analysis find and how did you add additional features?
 The exploratory analysis conducted as part of the modeling process provided invaluable insights, particularly through the use of a correlation matrix and a heatmap. These tools were instrumental in identifying the key features that had significant correlations with the target variable, which in this case was the count of bike demands.
 
 #### Key Findings from Exploratory Data Analysis (EDA):
@@ -32,7 +30,7 @@ Given the findings from the EDA, I decided to create new features that could bet
 * Rush Hour Features: To derive better insights from hour column, rush hours were categorized so as to provide overall better understanding to the model.
 * For season, although it was already categorized, I reassessed its categories to ensure they aligned with realistic seasonal impacts on bike usage and not be considered as ordinal values. season were distributed using One hot Encoding.
 
-### How much better did your model preform after adding additional features and why do you think that is?
+### Adding additional features
 The addition of new features significantly enhanced the performance of the model, as evidenced by the improvements in both internal validation metrics and external competition scores.\
 * Initially, the model's RMSE was higher (less negative), indicating less accuracy in predictions. After incorporating the newly engineered features, the RMSE improved to -108. This improvement in RMSE signifies that the model became more precise in predicting the count of bike demands, aligning more closely with the actual values.
 * Kaggle Competition Score: The impact of the feature engineering was even more pronounced when considering the Kaggle competition score, which drastically improved to 1.12. This score is a direct indicator of the model's performance in a competitive and external validation environment, suggesting that the features added were highly relevant and effective.
@@ -43,7 +41,6 @@ The addition of new features significantly enhanced the performance of the model
 * Better Capture of Non-linear Relationships: Many relationships between features and the target variable are non-linear, especially in contexts like weather impact. The categorical bins allowed the model to better handle and model these non-linearities by treating each bin as a separate entity rather than assuming linearity across a continuous range. 
 
 ## Hyper parameter tuning
-### How much better did your model preform after trying different hyper parameters?
 After experimenting with different hyperparameters, the model's performance improved significantly. Notably, I focused on tuning the hyperparameters of the CatBoost model, which was the second-best performer in the second run, with the Weighted Ensemble taking the top spot.
 ##### Hyperparameter Tuning Details:
 * Targeted Model: The CatBoost model was chosen for hyperparameter tuning because of its initial strong performance and potential for further improvement. 
@@ -53,7 +50,7 @@ After experimenting with different hyperparameters, the model's performance impr
 
 Improved RMSE to -118: The tuning of these hyperparameters led to a significant improvement in the model's predictive accuracy, with the RMSE improving to -118. This metric improvement indicates that the adjustments made to the CatBoost parameters effectively enhanced the model's ability to make accurate predictions, particularly by reducing error variance and bias in the estimated outcomes.
 
-### If you were given more time with this dataset, where do you think you would spend more time?
+### Further Improvements
 Given more time to work with this dataset, there are several areas where I could dive deeper to potentially enhance the model's performance-
 * Feature Importance and Selection: Using feature importance metrics to eliminate redundant or uninformative features which might be adding noise rather than value.
 * Advanced Model Tuning: While i've achieved notable improvements with some hyperparameter tuning, having more time would allow for a more exhaustive search across a broader range of parameters and models. Techniques like grid search or Bayesian optimization could be employed to methodically explore the parameter space for each model, ensuring that we are truly optimizing each model's potential.
@@ -61,7 +58,7 @@ Given more time to work with this dataset, there are several areas where I could
 * Model Stacking and Ensembling:
 * Another area of focus would be to experiment with advanced ensembling techniques and stacking. While AutoGluon does provide automated ensembling solutions, manually tweaking and combining different model outputs can sometimes yield even better results. .
 
-### Create a table with the models you ran, the hyperparameters modified, and the kaggle score.
+### Results
 <!-- |model|hpo1|hpo2|hpo3|score|
 |--|--|--|--|--|
 |initial|?|?|?|?|
@@ -74,11 +71,11 @@ Given more time to work with this dataset, there are several areas where I could
 | hpo           | 0.01        | 2              | 900  | 1.18811|
 
 
-### Create a line plot showing the top model score for the three (or more) training runs during the project.
+### Line plot showing the top model score for the three (or more) training runs during the project.
 
 ![model_train_score.png](img/model_train_score.png)
 
-### Create a line plot showing the top kaggle score for the three (or more) prediction submissions during the project.
+### Line plot showing the top kaggle score for the three (or more) prediction submissions during the project.
 
 ![model_test_score.png](img/model_test_score.png)
 
